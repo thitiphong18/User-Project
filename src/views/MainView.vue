@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import {
+  mdiWeatherSunny,
+  mdiWeatherNight,
+  mdiFolder,
+  mdiAccountMultiple,
+  mdiStar,
+} from "@mdi/js";
 
 const theme = ref("light");
 
@@ -14,9 +21,7 @@ function onClick() {
       <v-spacer></v-spacer>
 
       <v-btn
-        :prepend-icon="
-          theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'
-        "
+        :prepend-icon="theme === 'light' ? mdiWeatherSunny : mdiWeatherNight"
         @click="onClick"
         >Toggle Theme</v-btn
       >
@@ -34,24 +39,26 @@ function onClick() {
 
       <v-list density="compact" nav>
         <v-list-item
-          prepend-icon="mdi-folder"
+          :prepend-icon="mdiFolder"
           title="My Files"
           value="myfiles"
         ></v-list-item>
         <v-list-item
-          prepend-icon="mdi-account-multiple"
+          :prepend-icon="mdiAccountMultiple"
           title="Shared with me"
           value="shared"
         ></v-list-item>
         <v-list-item
-          prepend-icon="mdi-star"
+          :prepend-icon="mdiStar"
           title="Starred"
           value="starred"
         ></v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <v-container>Content area</v-container>
+      <v-container>
+        <RouterView></RouterView>
+      </v-container>
     </v-main>
   </v-app>
 </template>
