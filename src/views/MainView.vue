@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+const theme = ref("light");
+
+function onClick() {
+  theme.value = theme.value === "light" ? "dark" : "light";
+}
+</script>
+
 <template>
   <v-app :theme="theme">
     <v-app-bar>
@@ -45,13 +55,3 @@
     </v-main>
   </v-app>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-const theme = ref("light");
-
-function onClick() {
-  theme.value = theme.value === "light" ? "dark" : "light";
-}
-</script>
