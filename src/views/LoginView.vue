@@ -11,11 +11,26 @@ const password = ref("");
         <v-card-title primary-title class="text-center"> Login </v-card-title>
         <v-card-text>
           <v-form>
-            <v-text-field label="Login Name" v-model="loginName"></v-text-field>
+            <v-text-field
+              label="Login Name"
+              v-model="loginName"
+              :rules="[
+                (v) => !!v || 'Login Name is required',
+                (v) =>
+                  v.length >= 4 ||
+                  'Name must be more than or equal 4 characters',
+              ]"
+            ></v-text-field>
             <v-text-field
               label="Password"
               type="password"
               v-model="password"
+              :rules="[
+                (v) => !!v || 'Password is required',
+                (v) =>
+                  v.length >= 8 ||
+                  'Password must be more than or equal 8 characters',
+              ]"
             ></v-text-field>
           </v-form>
           <pre>
