@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainView from "./views/MainView.vue";
 import LoginVIew from "./views/LoginView.vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 const loginName = ref("");
 const isLogin = computed(() => {
   //loginName is not empty
@@ -9,10 +9,19 @@ const isLogin = computed(() => {
 });
 const login = (userName: string): void => {
   loginName.value = userName;
+  localStorage.setItem("loginName", userName);
 };
 const logout = () => {
   loginName.value = "";
+  localStorage.removeItem("loginName");
 };
+const loadData = () => {
+  loginName.value = localStorage.getItem("loginName") || "";
+};
+onMounted(() => {
+  console.log("On Mounted");
+  loadData();
+});
 </script>
 
 <template>
