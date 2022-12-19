@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <LoginVIew v-if="!loginStore.loginName" @login="loginStore.login" />
+  <LoginVIew v-if="!loginStore.loginName" />
   <MainView
     v-if="loginStore.isLogin"
     @logout="loginStore.logout"
